@@ -131,6 +131,9 @@ a:focus {
 	background-size: cover;
 	-o-background-size: cover;
 }
+.intro .intro-body::before {
+	content: url(../img/sree.jpg) no-repeat center scroll;
+}
 .intro .intro-body {
 	display: table-cell;
 	vertical-align: middle;
@@ -286,6 +289,10 @@ ul.banner-social-buttons {
 	ul.banner-social-buttons li:last-child {
 		margin-bottom: 0;
 	}
+}
+ul {
+	font-size: 17px;
+	text-align: left;
 }
 footer {
 	padding: 50px 0;
