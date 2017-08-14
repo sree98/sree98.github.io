@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reddit Top 10</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<!-- font awsome icons -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#result").hide("fast");
+			$("#subSearch").click(function(){
+				var name = $("#subName").val();
+				var time = $( "#timeSelect option:selected" ).text().toLowerCase();
+				if (name.length>0) {
+					var urlName = "https://www.reddit.com/r/" + name + "/top/.json?limit=10&t=" + time;
+					$.getJSON(urlName, function(data){
+						$("#result").show("fast");
+						$.each(data.data.children, function(i, post) {
+							$("#result").append('<a href="'+ post.data.url +'"><h4>' + post.data.title + '</h4></a>');
+						});
+					});
+				} else{
+					alert("Search is empty.");
+				};
+			});
+		});
+	</script>
+</head>
+<body style="background-color: #D5E0D6;">
+	<div class="container">
+		<h1 style="text-align: center;">Top 10 From Your Favorite Subreddit</h1>
+		<div style="text-align: center;">
+			<form class="form-inline">
+				<input type="text" class="form-control" placeholder="Subreddit Name" id="subName">
+				<select id="timeSelect" class="form-control">
+					<option value="1">Hour</option>
+					<option value="2">Day</option>
+					<option value="3">Week</option>
+					<option value="4">Month</option>
+					<option value="5">Yeah</option>
+					<option value="6">All</option>
+				</select>
+				<button type="button" class="btn btn-default" id="subSearch">Search</button>
+			</form>
+		</div>
+		<br>
+		<div style="text-align: center;" class="well" id="result">
+			
+		</div>
+	</div>
+
+	
+</body>
+</html>
