@@ -26,7 +26,7 @@
 				var name = $("#subName").val();
 				var time = $( "#timeSelect option:selected" ).text().toLowerCase();
 				if (name.length>0) {
-					var urlName = "https://www.reddit.com/r/" + name + "/top/.json?limit=10&t=" + time;
+					var urlName = "https://www.reddit.com/r/" + name + "/top.json?limit=10&t=" + time;
 					$.getJSON(urlName, function(data){
 						$("#result").show("fast");
 						$.each(data.data.children, function(i, post) {
