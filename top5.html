@@ -22,6 +22,7 @@
 		$(document).ready(function(){
 			$("#result").hide();
 			$("#subSearch").click(function(){
+				$("#result").empty();
 				var name = $("#subName").val();
 				var time = $( "#timeSelect option:selected" ).text().toLowerCase();
 				if (name.length>0) {
