@@ -19,24 +19,80 @@
 		body {
 			font-family: 'Raleway', sans-serif;
 		}
+        
 		#title {
 			color: #23c4ac;		
 		}
 
 		#landingScreen {
 			height: 100vh;
+            margin-top: 50px;
 			/*background-repeat: no-repeat;
 			background-position: center;*/
 			/*width: 100vh;*/
 			/*background-color: red;*/
 			background: url(./asset/background.jpg) no-repeat center;
 		}
+
+        .container{
+           background-color:aliceblue;
+            width:100%;
+        }
+       
+        
+        
 		</style>
 </head>
 <body>
-	<div class="row">
+        
+    <!-- Navigation -->
+	<nav class="navbar navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+					Menu <i class="fa fa-bars"></i>
+				</button>
+				<a class="navbar-brand page-scroll" href="#page-top">
+					Alitude
+				</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+				<ul class="nav navbar-nav">
+					<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+					<li class="hidden">
+						<a href="#page-top"></a>
+					</li>
+					<li>
+						<a class="page-scroll" href="#about">About</a>
+					</li>
+					<li>
+						<a class="page-scroll" href="#work">Work</a>
+					</li>
+					<li>
+						<a class="page-scroll" href="#projects">Projects</a>
+					</li>
+					<li>
+						<a class="page-scroll" href="#skills">Skills</a>
+					</li>
+					<li>
+						<a class="page-scroll" href="assets/sreekuttan_resume.pdf">Résumé</a>
+					</li>
+					<li>
+						<a class="page-scroll" href="#contact">Contact</a>
+					</li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+    
+      <div class=row>  
 		<div id="landingScreen">
-			<div class="text-center" style="margin: auto;"><h1 id="title">Hack the North Project</h1></div>			
+			<div class="text-center" style="margin: auto;">
+            </div>			
 		</div>
 	</div>
 </body>
