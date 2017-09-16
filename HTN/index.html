@@ -19,15 +19,25 @@
 		body {
 			font-family: 'Raleway', sans-serif;
 		}
-		.title {
-			color: ##23c4ac;
+		#title {
+			color: #23c4ac;		
 		}
-	</style>
 
+		#landingScreen {
+			height: 100vh;
+			/*background-repeat: no-repeat;
+			background-position: center;*/
+			/*width: 100vh;*/
+			/*background-color: red;*/
+			background: url(./asset/background.jpg) no-repeat center;
+		}
+		</style>
 </head>
 <body>
-	<div class="container">
-		<div class="text-center"><h1 id="title">Hack the North Project</h1></div>
+	<div class="row">
+		<div id="landingScreen">
+			<div class="text-center" style="margin: auto;"><h1 id="title">Hack the North Project</h1></div>			
+		</div>
 	</div>
 </body>
 </html>
