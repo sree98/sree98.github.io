@@ -55,7 +55,7 @@
 		}
 	</style>
 </head>
-<body>
+<body id="page-top">
         
     <!-- Navigation -->
 	<nav class="navbar navbar-fixed-top" role="navigation">
@@ -119,12 +119,12 @@
 						<input type="text" class="form-control" name="budget" id="budget">
 					</div>
 					<div class="col-md-2 text-center" style="margin-top: 12px">
-						<button class="btn btn-default btn-lg">Inquire</button>
+						<button class="btn btn-default btn-lg" id="submitInquiry">Inquire</button>
 					</div>
 				</div>
 				<div class="col-md-3">&nbsp;</div>
 			</div>
-			<div class="col-xs-12">
+			<div class="col-xs-12 text-center">
 				<a href="#about" class="btn btn-circle page-scroll">
 					<i class="fa fa-angle-double-down animated"></i>
 				</a>
@@ -132,8 +132,40 @@
 		</div>
 	</div>
 
+	<div id="resultSection" class="fullPage">
+		<div class="container" id="resultCollection">
+			
+		</div>
+	</div>
+
 	<section class="container fullPage" id="about">
 		<div></div>
 	</section>
 </body>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#resultSection').hide();
+	});
+
+	$('#submitInquiry').on('click', function(){
+		var originID = $('#origin').val();
+		var priceMax = $('#budget').val();
+		console.log(originID + ',' + priceMax);
+		if (originID == '' || priceMax == '') {
+			alert("One of the input is either empty or inavlid, please try again.");
+		} else {
+			$(resultCollection)
+			$.getJSON('https://api.sandbox.amadeus.com/v1.2/travel-intelligence/top-destinations?apikey=XpZ1mgy7gzhuZWxDSh3EgRU6cTSEkdqR&period=2016-09&origin=' + originID + '&number_of_results=10', function(data){
+					$('#resultSection').fadeIn();
+					$.each(data.results, function(i, post){
+						$('#resultCollection').append('<div class="col-xs-12"> <h3>'+post.destination + ' has been chosen as one of the cheap but a great vacation through out the world for you.</h3></div>');
+					});
+					$('html, body').animate({
+						scrollBottom: $("#resultSection").offset().bottom
+					}, 2000);
+			});
+		}
+	});
+</script>
 </html>
