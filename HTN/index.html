@@ -106,52 +106,71 @@
             margin-right:5%;
             
         }
-        .col-md-3{
+        .col-md-6{
             position:relative;
-            width:25%;
+            width:50%;
         }
         
         .image{
             display: block;
             width:100%;
-            height: 500px;
+            height:250px;
+            margin-bottom: 5%;
         }
         
         .overlay{
             position:absolute;
-            top: 25%;
-            left: 0;
-            height: 100%;
-            width: 100%;
+            top: 0%;
+            left: 2.5%;
+            height: 90%;
+            width: 95%;
             opacity: 0;
             transition: .5s ease;
-            background-color: #GGG;
+            background-color: black;
+            color: white;
             padding: 10px;
         }
         
-        .col-md-3:hover .overlay{
-            opacity: 1.0;
+        .col-md-6:hover .overlay{
+            opacity: 0.6;
+            /*background-color: */
         }
         
-        .col-md-3:hover .image{
-            opacity: 0.5;
+        .col-md-6:hover .image{
+            opacity: 0.3;
         }
         
         .text1{
-            color: black;
+            color: white;
             font-size: 20px;
             position: absolute;
             top: 50%;
             left: 50%;
+            width: 80%;
+            height: 90%;
+            margin-top: 5%;
             transform: translate(-50%, -50%);
             -ms-transform: translate(-50%, -50%);
         }
-    
-        
-		/*#SignIn {
-			background-color: #6FBED9;
-			color: #ffffff;
-		}*/
+
+        .text2 {
+        	color: white;
+        	width: 90%;
+        	margin-left: 5%;
+        }
+    	
+        .overlay p {
+        	text-align: center;
+        }
+		
+		.testquote {
+			width: 50%;
+			margin-left: 25%;
+		}
+
+		.testimonialquotation p {
+			font-size: 16px;
+		}
 	</style>
 </head>
 <body id="page-top">
@@ -179,16 +198,18 @@
 						<a class="page-scroll" href="#about">About</a>
 					</li>
 					<li>
-						<a class="page-scroll" href="#work">Deals</a>
+						<a class="page-scroll" href="#deals">Deals</a>
 					</li>
+					<!--
 					<li>
 						<a class="page-scroll" href="#projects">Blog</a>
 					</li>
+					-->
 					<li>
-						<a class="page-scroll" href="#skills">Shop</a>
+						<a class="page-scroll" href="#Testimonials">Testimonials</a>
 					</li>
 					<li>
-						<a class="page-scroll" href="assets/sreekuttan_resume.pdf">Contact</a>
+						<a class="page-scroll" href="#Contact">Contact</a>
 					</li>
 					<li id="SignIn" style="background-color: #6FBED9">
 						<a style="color: #ffffff" class="page-scroll" href="#contact">Sign In</a>
@@ -200,7 +221,7 @@
 		<!-- /.container -->
 	</nav>
     
-  <div class="row">  
+  	<div class="row">  
 		<div id="landingScreen" class="fullPage">
 			<div id="centerTitleScreen" class="row">
 				<h1 id="title" class="text-center" style="margin-top: 0"><!-- Altitude --> <img src="./asset/logo.png"></h1>
@@ -227,7 +248,7 @@
 				<a href="#about" class="btn btn-circle page-scroll">
 					<i class="fa fa-angle-double-down animated"></i>
 				</a>
-				</div>
+			</div>
 		</div>
 	</div>
 
@@ -240,28 +261,27 @@
 
 	<br>
     
-    <section class="container fullPage" id="about">
+    <section id="about" class="container fullPage">
 		<div>
-            
-        <h2> It's your journey. </h2>
-        <hr>
-        <p>At Altitude, we want to give YOU the best experience you can get for the best deals. The possibilities are endless, and we allow you to enjoy life at its best in this beautiful world. </p>
+        	<h2 style="margin-top: 6%">It's <b>your</b> journey. </h2>
+        	<hr>
+	        <p>At Altitude, we want to give you the best experience you can get for the best deals. The possibilities are endless, and we allow you to enjoy life at its best in this beautiful world. </p>
 
-        <p>Since Altitude was founded on September 16, 2017, we value our customers’ quality of travel and passion for enjoyment. With our advanced algorithms, we aim to give you a taste of different cultures of the world, whether it be in festivals, cuisine or tradition. There really is so much out there! </p>
+	        <p>Since Altitude was founded on September 16, 2017, we value our customers’ quality of travel and passion for enjoyment. With our advanced algorithms, we aim to give you a taste of different cultures of the world, whether it be in festivals, cuisine or tradition. There <b>really is</b> so much out there! </p>
 
-        <h3> You tell us where you want to go. We'll take you there.</h3>
+	        <h3> You tell us where you want to go. We'll take you there.</h3>
 
-        <p>Altitude connects you to thousands of destinations in over 125 countries. With your valued input, lasting memories will be created. </p>
+	        <p>Altitude connects you to thousands of destinations in over 125 countries. With your valued input, lasting memories will be created. </p>
 
-        <h3> Your safety is our priority. </h3>
+	        <h3> Your safety is our priority. </h3>
 
-        <p>A pleasant vacation is a vacation during which travelers do not face any dangers. We work hard at Altitude so you can focus on the time of your life. </p>
+	        <p>A pleasant vacation is a vacation during which travellers do not face any dangers. We work hard at Altitude so you can focus on the time of your life. </p>
 
-        <h3> We do our research. </h3>
+	        <h3> We do our research. </h3>
+	        
+	        <p>At Altitude, we work with the best of the best. Our team members have experienced our vacation destinations themselves, and they help us figure out how to design the perfect experience for you. With countless hours dedicated to planning, research and training, we do our best so you can get the best.</p>
 
-        <p>At Altitude, we work with the best of the best. Our team members have experienced our vacation destinations themselves, and they help us figure out how to design the perfect experience for you. With countless hours dedicated to planning, research and training, we do our best so you can get the best.</p>
-
-        <h3> High elevations and Low prices; An impressive duo in our books. </h3>
+	        <h3> High elevations and Low prices; An impressive duo in our books. </h3>
 
         <p>Travel can be expensive. We understand that, and it is our mission to plan for you amazing vacations to fit your budget and interests. That way, you get your desired vacation for less, and our vision is fulfilled. It’s a win-win you don’t want to miss. </p>
         
@@ -272,51 +292,80 @@
         </div>
         </div>
 	</section>
-    
-    <hr>
-    <br>
+	<br>
+	
+	<p id="deals"></p>
     <div class = "quote"> 
-        <center><h1> Top Experience To Travel </h1></center>
+        <center><h1 style="margin-top: 5%"> Top Travel Deals this Week </h1></center>
         <hr>
     </div>
-    
+
     <div id="panel" class="row">
-        <div class="col-md-3"> 
+        <div class="col-md-6" id="column"> 
             <img src="asset/China.jpg" class ="image">
             <div class="overlay">
-	            <h3 id="text1"> China in 10 Days </h3>
+				<h3 id="text1"> China in 10 Days </h3>
 	            <h4> $850.00 CAD/Person </h4>
-	            <p> Take an informative and interactive tour of the major cities of China: Beijing, Shanghai, Suzhou, Wuxi, Hangzhou, and more! Wander around the beautiful gardens, taste the exquisite cuisine, and follow the pristine rivers. Stay at renowned 5-star hotels and experience China in its best. </p>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <img src="asset/Cuba.jpg" class ="image">
-            <div class="overlay">
-            <h3 id="text1"> Chill in Cuba </h3>
-            <h4> $299.00 CAD/person </h4>
-            <p> Over an 8-day period, tour around several great Cuban cities, including Havana, Trinidad, and Santiago de Cuba. In addition, enjoy the beautiful city scenery and wonderful hotel accommodation to make you feel at your best comfort! </p>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <img src="asset/Calgary.jpg" class ="image">
-            <div class="overlay">
-            <h3 id="text1"> Reach the Rockies! </h3>
-            <h4> $614.25 CAD/Person </h4>
-            <p> Visit one of the greatest wonders of Canada in this exclusive trip to cities including Calgary, Banff and Jasper. Package includes special hotel breakfasts, and a 5-night stay at a town centre hotel, making it extremely easy for transportation.  </p>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <img src="asset/Yellowstone.jpg" class ="image">
-            <div class="overlay">
-            <h3 id="text1">  Travel to Yellowstone Park </h3>
-            <h4> $391.00 CAD/Person </h4>
-            <p> For 6 days, tour around Salt Lake City to famous attractions including, but definitely not limited to, Temple Square, Antelope Island State Park, and the Clark Planetarium. Appreciate American history and culture at this landmark and have a relaxed, but very interesting time! </p>
-            </div>
-        </div>
+	            <p class="text2"> Take an informative and interactive tour of the major cities of China: Beijing, Shanghai, Suzhou, Wuxi, Hangzhou, and more! Wander around the beautiful gardens, taste the exquisite cuisine, and follow the pristine rivers. Stay at renowned 5-star hotels and experience China in its best. </p>
+        	</div>
+    	</div>
+    	<div class="col-md-6" id="column">
+			<img src="asset/Cuba.jpg" class ="image">
+        	<div class="overlay">
+	        	<h3 id="text1"> Chill in Cuba </h3>
+	        	<h4> $299.00 CAD/person </h4>
+	        	<p class="text2"> Over an 8-day period, tour around several great Cuban cities, including Havana, Trinidad, and Santiago de Cuba. In addition, enjoy the beautiful city scenery and wonderful hotel accommodation to make you feel at your best comfort! </p>
+    		</div>
+    	</div>
+	    <div class="col-md-6" id="column">
+	        <img src="asset/Calgary.jpg" class ="image">
+	        <div class="overlay">
+		        <h3 id="text1"> Reach the Rockies! </h3>
+		        <h4> $614.25 CAD/Person </h4>
+		        <p class="text2"> Visit one of the greatest wonders of Canada in this exclusive trip to cities including Calgary, Banff and Jasper. Package includes special hotel breakfasts, and a 5-night stay at a town centre hotel, making it extremely easy for transportation.  </p>
+	    	</div>
+    	</div>
+		<div class="col-md-6" id="column">
+	        <img src="asset/Yellowstone.jpg" class ="image">
+	        <div class="overlay">
+		        <h3 id="text1">  Travel to Yellowstone Park </h3>
+		        <h4> $391.00 CAD/Person </h4>
+		        <p class="text2"> For 6 days, tour around Salt Lake City to famous attractions including, but definitely not limited to, Temple Square, Antelope Island State Park, and the Clark Planetarium. Appreciate American history and culture at this landmark and have a relaxed, but very interesting time! </p>
+	        </div>
+    	</div>
     </div>
-    
+    <hr>
+    <p id="Testimonials" style="margin-bottom: 5%"></p>
     <br>
-    <br>
+    <div class="container fullPage">
+    	<div id="testquote" style="width: 400px; margin: auto">
+    		<center>
+    			<img src="https://nephilaweb.com.ph/images/mgthumbnails/quote-icon.png" width="20%" height="20%" style="margin-top: 10%">
+    			<br>
+    			<br>
+    			<p style="font-family: 'Georgia'; font-size: 20px">
+    				“Altitude offered me and my wife the best travel deal when we went on vacation to Cuba last month. We saved nearly $50 by having our travel methods optimized. The quality of travel was excellent and we had no concerns!”
+					<br>
+					<br>
+					- Barry Benson
+    			</p>
+    		</center>
+    	</div>
+    	<hr>
+    </div>
+    <p id="Contact"></p>
+    <div id="panel" class="container fullPage">
+    	<div id="testquote" style="margin: auto">
+    		<h1 style="margin-top: 5%">
+    			<center>
+    				Contact Us
+				</center>
+    		</h1>
+    		<p>
+    			It is our job and mission to provide the best service to you at all times. If you have any questions or concerns, please contact us and we’ll be more than happy to help!
+    		</p>
+    	</div>
+    </div>
 </body>
 
 <script type="text/javascript">
