@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Hack The North Project</title>
+	<title>Altitude</title>
 
 	<!-- extra things -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -126,6 +126,7 @@
             opacity: 0;
             transition: .5s ease;
             background-color: #GGG;
+            padding: 10px;
         }
         
         .col-md-3:hover .overlay{
@@ -232,13 +233,12 @@
 
 
 	<section id="resultSection" class="fullPage">
-		<div class="container" id="resultCollection">
-			
+		<div class="container">
+			<div class="col-xs-12" id="resultCollection">&npsp;</div>			
 		</div>
-	</sectiion>
+	</section>
 
-	<section class="container fullPage" id="about">
-		<div></div>
+	<br>
     
     <section class="container fullPage" id="about">
 		<div>
@@ -255,7 +255,7 @@
 
         <h3> Your safety is our priority. </h3>
 
-        <p>A pleasant vacation is a vacation during which travellers do not face any dangers. We work hard at Altitude so you can focus on the time of your life. </p>
+        <p>A pleasant vacation is a vacation during which travelers do not face any dangers. We work hard at Altitude so you can focus on the time of your life. </p>
 
         <h3> We do our research. </h3>
 
@@ -267,7 +267,7 @@
         
         <div > 
             <img class="img-circle" src="./asset/background.jpg">
-            <h2> Sree The Free </h2>
+            <h2> Free Human </h2>
             <p> Author </p>
         </div>
         </div>
@@ -280,40 +280,40 @@
         <hr>
     </div>
     
-        <div id="panel" class="row">
-            <div class="col-md-3"> 
-                <img src="asset/China.jpg" class ="image">
-                <div class="overlay">
-                <h3 id="text1"> China in 10 Days </h3>
-                <h4> $850.00 CAD/Person </h4>
-                <p> Take an informative and interactive tour of the major cities of China: Beijing, Shanghai, Suzhou, Wuxi, Hangzhou, and more! Wander around the beautiful gardens, taste the exquisite cuisine, and follow the pristine rivers. Stay at renowned 5-star hotels and experience China in its best. </p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <img src="asset/Cuba.jpg" class ="image">
-                <div class="overlay">
-                <h3 id="text1"> Chill in Cuba </h3>
-                <h4> $299.00 CAD/person </h4>
-                <p> Over an 8-day period, tour around several great Cuban cities, including Havana, Trinidad, and Santiago de Cuba. In addition, enjoy the beautiful city scenery and wonderful hotel accommodation to make you feel at your best comfort! </p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <img src="asset/Calgary.jpg" class ="image">
-                <div class="overlay">
-                <h3 id="text1"> Reach the Rockies! </h3>
-                <h4> $614.25 CAD/Person </h4>
-                <p> Visit one of the greatest wonders of Canada in this exclusive trip to cities including Calgary, Banff and Jasper. Package includes special hotel breakfasts, and a 5-night stay at a town centre hotel, making it extremely easy for transportation.  </p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <img src="asset/Yellowstone.jpg" class ="image">
-                <div class="overlay">
-                <h3 id="text1">  Travel to Yellowstone Park </h3>
-                <h4> $391.00 CAD/Person </h4>
-                <p> For 6 days, tour around Salt Lake City to famous attractions including, but definitely not limited to, Temple Square, Antelope Island State Park, and the Clark Planetarium. Appreciate American history and culture at this landmark and have a relaxed, but very interesting time! </p>
-                </div>
+    <div id="panel" class="row">
+        <div class="col-md-3"> 
+            <img src="asset/China.jpg" class ="image">
+            <div class="overlay">
+	            <h3 id="text1"> China in 10 Days </h3>
+	            <h4> $850.00 CAD/Person </h4>
+	            <p> Take an informative and interactive tour of the major cities of China: Beijing, Shanghai, Suzhou, Wuxi, Hangzhou, and more! Wander around the beautiful gardens, taste the exquisite cuisine, and follow the pristine rivers. Stay at renowned 5-star hotels and experience China in its best. </p>
             </div>
         </div>
+        <div class="col-md-3">
+            <img src="asset/Cuba.jpg" class ="image">
+            <div class="overlay">
+            <h3 id="text1"> Chill in Cuba </h3>
+            <h4> $299.00 CAD/person </h4>
+            <p> Over an 8-day period, tour around several great Cuban cities, including Havana, Trinidad, and Santiago de Cuba. In addition, enjoy the beautiful city scenery and wonderful hotel accommodation to make you feel at your best comfort! </p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <img src="asset/Calgary.jpg" class ="image">
+            <div class="overlay">
+            <h3 id="text1"> Reach the Rockies! </h3>
+            <h4> $614.25 CAD/Person </h4>
+            <p> Visit one of the greatest wonders of Canada in this exclusive trip to cities including Calgary, Banff and Jasper. Package includes special hotel breakfasts, and a 5-night stay at a town centre hotel, making it extremely easy for transportation.  </p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <img src="asset/Yellowstone.jpg" class ="image">
+            <div class="overlay">
+            <h3 id="text1">  Travel to Yellowstone Park </h3>
+            <h4> $391.00 CAD/Person </h4>
+            <p> For 6 days, tour around Salt Lake City to famous attractions including, but definitely not limited to, Temple Square, Antelope Island State Park, and the Clark Planetarium. Appreciate American history and culture at this landmark and have a relaxed, but very interesting time! </p>
+            </div>
+        </div>
+    </div>
     
     <br>
     <br>
@@ -331,16 +331,20 @@
 		if (originID == '' || priceMax == '') {
 			alert("One of the input is either empty or inavlid, please try again.");
 		} else {
-			$(resultCollection)
 			$.getJSON('https://api.sandbox.amadeus.com/v1.2/travel-intelligence/top-destinations?apikey=XpZ1mgy7gzhuZWxDSh3EgRU6cTSEkdqR&period=2016-09&origin=' + originID + '&number_of_results=10', function(data){
 					$('#resultSection').fadeIn();
 					$.each(data.results, function(i, post){
 						$('#resultCollection').append('<div class="col-xs-12"> <h3>'+post.destination + ' has been chosen as one of the cheap but a great vacation through out the world for you.</h3></div>');
 					});
-					$("#").get(0).scrollIntoView();
+					$("#resultSection").get(0).scrollIntoView();
 					// $('html, body').animate({
 					// 	scrollBottom: $("#resultSection").offset().bottom
-					// }, 2000);
+					// }, 2000);\
+
+					//GOOGLE PLACES APP KEY AIzaSyCvVb4yYfTWXkER9RxcMcpDqA5vShkWfgA
+
+
+
 			});
 		}
 	});
