@@ -35,7 +35,7 @@
 		}
     
 
-		#centerTitleScreen {
+		.centerTitleScreen {
 /*			width: 40%; can be in percentage also.*/
 			/*height: auto;*/
 			/*margin: 0 auto;*/
@@ -74,31 +74,6 @@
             width:100px;
             height:70px;
         }
-        
-        
-        /*#panel
-        {
-            text-align: center;
-            width: 90%;
-            margin-left: 5%;
-            margin-right: 5%;
-        }
-        #panel img
-        {
-            height: 450px;
-            width: 97%;
-        }
-        
-        #panel img:hover{
-            opacity: 1.0;
-        }
-        
-        #panel h3{
-            position:absolute;
-            top: 70%;
-            left:50%;
-            z-index: 1;
-        } */
         
         #panel{
             text-align: center;
@@ -223,7 +198,7 @@
     
   	<div class="row">  
 		<div id="landingScreen" class="fullPage">
-			<div id="centerTitleScreen" class="row">
+			<div class="centerTitleScreen" class="row">
 				<h1 id="title" class="text-center" style="margin-top: 0"><!-- Altitude --> <img src="./asset/logo.png"></h1>
 				<div class="col-xs-12">&nbsp;</div>
 				<div class="col-xs-12">&nbsp;</div>
@@ -252,17 +227,19 @@
 		</div>
 	</div>
 
+	<hr>
+
 
 	<section id="resultSection" class="fullPage">
-		<div class="container">
-			<div class="col-xs-12" id="resultCollection">&npsp;</div>			
+		<div class="container centerTitleScreen">
+			<div class="col-xs-12" id="resultCollection">&nbsp;</div>			
 		</div>
 	</section>
-
+	<hr>
 	<br>
     
     <section id="about" class="container fullPage">
-		<div>
+		<div class="centerTitleScreen">
         	<h2 style="margin-top: 6%">It's <b>your</b> journey. </h2>
         	<hr>
 	        <p>At Altitude, we want to give you the best experience you can get for the best deals. The possibilities are endless, and we allow you to enjoy life at its best in this beautiful world. </p>
@@ -292,80 +269,88 @@
         </div>
         </div>
 	</section>
+
+	<hr>
 	<br>
 	
-	<p id="deals"></p>
-    <div class = "quote"> 
-        <center><h1 style="margin-top: 5%"> Top Travel Deals this Week </h1></center>
-        <hr>
-    </div>
+	<section id="deals" class="container fullPage">
+		<div class="centerTitleScreen">
+			<div class = "quote"> 
+	        <center><h1 style="margin-top: 5%"> Top Travel Deals this Week </h1></center>
+	        <hr>
+	    </div>
 
-    <div id="panel" class="row">
-        <div class="col-md-6" id="column"> 
-            <img src="asset/China.jpg" class ="image">
-            <div class="overlay">
-				<h3 id="text1"> China in 10 Days </h3>
-	            <h4> $850.00 CAD/Person </h4>
-	            <p class="text2"> Take an informative and interactive tour of the major cities of China: Beijing, Shanghai, Suzhou, Wuxi, Hangzhou, and more! Wander around the beautiful gardens, taste the exquisite cuisine, and follow the pristine rivers. Stay at renowned 5-star hotels and experience China in its best. </p>
-        	</div>
-    	</div>
-    	<div class="col-md-6" id="column">
-			<img src="asset/Cuba.jpg" class ="image">
-        	<div class="overlay">
-	        	<h3 id="text1"> Chill in Cuba </h3>
-	        	<h4> $299.00 CAD/person </h4>
-	        	<p class="text2"> Over an 8-day period, tour around several great Cuban cities, including Havana, Trinidad, and Santiago de Cuba. In addition, enjoy the beautiful city scenery and wonderful hotel accommodation to make you feel at your best comfort! </p>
-    		</div>
-    	</div>
-	    <div class="col-md-6" id="column">
-	        <img src="asset/Calgary.jpg" class ="image">
-	        <div class="overlay">
-		        <h3 id="text1"> Reach the Rockies! </h3>
-		        <h4> $614.25 CAD/Person </h4>
-		        <p class="text2"> Visit one of the greatest wonders of Canada in this exclusive trip to cities including Calgary, Banff and Jasper. Package includes special hotel breakfasts, and a 5-night stay at a town centre hotel, making it extremely easy for transportation.  </p>
+	    <div id="panel" class="row">
+	        <div class="col-md-6" id="column"> 
+	            <img src="asset/China.jpg" class ="image">
+	            <div class="overlay">
+					<h3 id="text1"> China in 10 Days </h3>
+		            <h4> $850.00 CAD/Person </h4>
+		            <p class="text2"> Take an informative and interactive tour of the major cities of China: Beijing, Shanghai, Suzhou, Wuxi, Hangzhou, and more! Wander around the beautiful gardens, taste the exquisite cuisine, and follow the pristine rivers. Stay at renowned 5-star hotels and experience China in its best. </p>
+	        	</div>
 	    	</div>
-    	</div>
-		<div class="col-md-6" id="column">
-	        <img src="asset/Yellowstone.jpg" class ="image">
-	        <div class="overlay">
-		        <h3 id="text1">  Travel to Yellowstone Park </h3>
-		        <h4> $391.00 CAD/Person </h4>
-		        <p class="text2"> For 6 days, tour around Salt Lake City to famous attractions including, but definitely not limited to, Temple Square, Antelope Island State Park, and the Clark Planetarium. Appreciate American history and culture at this landmark and have a relaxed, but very interesting time! </p>
-	        </div>
-    	</div>
-    </div>
-    <hr>
-    <p id="Testimonials" style="margin-bottom: 5%"></p>
-    <br>
-    <div class="container fullPage">
-    	<div id="testquote" style="width: 400px; margin: auto">
-    		<center>
-    			<img src="https://nephilaweb.com.ph/images/mgthumbnails/quote-icon.png" width="20%" height="20%" style="margin-top: 10%">
-    			<br>
-    			<br>
-    			<p style="font-family: 'Georgia'; font-size: 20px">
-    				“Altitude offered me and my wife the best travel deal when we went on vacation to Cuba last month. We saved nearly $50 by having our travel methods optimized. The quality of travel was excellent and we had no concerns!”
-					<br>
-					<br>
-					- Barry Benson
-    			</p>
-    		</center>
-    	</div>
-    	<hr>
-    </div>
-    <p id="Contact"></p>
-    <div id="panel" class="container fullPage">
-    	<div id="testquote" style="margin: auto">
-    		<h1 style="margin-top: 5%">
-    			<center>
-    				Contact Us
+	    	<div class="col-md-6" id="column">
+				<img src="asset/Cuba.jpg" class ="image">
+	        	<div class="overlay">
+		        	<h3 id="text1"> Chill in Cuba </h3>
+		        	<h4> $299.00 CAD/person </h4>
+		        	<p class="text2"> Over an 8-day period, tour around several great Cuban cities, including Havana, Trinidad, and Santiago de Cuba. In addition, enjoy the beautiful city scenery and wonderful hotel accommodation to make you feel at your best comfort! </p>
+	    		</div>
+	    	</div>
+		    <div class="col-md-6" id="column">
+		        <img src="asset/Calgary.jpg" class ="image">
+		        <div class="overlay">
+			        <h3 id="text1"> Reach the Rockies! </h3>
+			        <h4> $614.25 CAD/Person </h4>
+			        <p class="text2"> Visit one of the greatest wonders of Canada in this exclusive trip to cities including Calgary, Banff and Jasper. Package includes special hotel breakfasts, and a 5-night stay at a town centre hotel, making it extremely easy for transportation.  </p>
+		    	</div>
+	    	</div>
+			<div class="col-md-6" id="column">
+		        <img src="asset/Yellowstone.jpg" class ="image">
+		        <div class="overlay">
+			        <h3 id="text1">  Travel to Yellowstone Park </h3>
+			        <h4> $391.00 CAD/Person </h4>
+			        <p class="text2"> For 6 days, tour around Salt Lake City to famous attractions including, but definitely not limited to, Temple Square, Antelope Island State Park, and the Clark Planetarium. Appreciate American history and culture at this landmark and have a relaxed, but very interesting time! </p>
+		        </div>
+	    	</div>
+	    </div>	
+		</div>
+	</section>
+
+	    <hr>		
+    
+	<section id="Testimonials" class="container fullPage">
+		<div id="testquote" style="width: 400px; margin: auto" class="centerTitleScreen">
+			<center>
+				<img src="https://nephilaweb.com.ph/images/mgthumbnails/quote-icon.png" width="20%" height="20%" style="margin-top: 10%">
+				<br>
+				<br>
+				<p style="font-family: 'Georgia'; font-size: 20px">
+					“Altitude offered me and my wife the best travel deal when we went on vacation to Cuba last month. We saved nearly $50 by having our travel methods optimized. The quality of travel was excellent and we had no concerns!”
+				<br>
+				<br>
+				- Barry Benson
+				</p>
+			</center>
+		</div>
+	</section>
+
+		<hr>
+
+	<section id="Contact" class="container fullPage">
+		<div id="panel" class="centerTitleScreen">
+			<div id="testquote" style="margin: auto">
+				<h1 style="margin-top: 5%">
+					<center>
+						Contact Us
 				</center>
-    		</h1>
-    		<p>
-    			It is our job and mission to provide the best service to you at all times. If you have any questions or concerns, please contact us and we’ll be more than happy to help!
-    		</p>
-    	</div>
-    </div>
+				</h1>
+				<p>
+					It is our job and mission to provide the best service to you at all times. If you have any questions or concerns, please contact us and we’ll be more than happy to help!
+				</p>
+			</div>
+		</div>		
+	</section>    
 </body>
 
 <script type="text/javascript">
