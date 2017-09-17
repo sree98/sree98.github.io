@@ -52,7 +52,105 @@
 
 		input[type=text]{
 			margin-left:10
-		}
+        }
+        
+        .quote p
+        {
+            margin-left: 15%;
+            margin-right: 15%;
+            margin-bottom: 50px;
+        }
+        
+        .quote hr
+        {
+            width: 10%;
+            border-color:aqua;
+            background-color: aqua;
+            color: aqua;
+        }
+        
+        .img-circle{
+            border-radius: 50%;
+            width:100px;
+            height:70px;
+        }
+        
+        
+        /*#panel
+        {
+            text-align: center;
+            width: 90%;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+        #panel img
+        {
+            height: 450px;
+            width: 97%;
+        }
+        
+        #panel img:hover{
+            opacity: 1.0;
+        }
+        
+        #panel h3{
+            position:absolute;
+            top: 70%;
+            left:50%;
+            z-index: 1;
+        } */
+        
+        #panel{
+            text-align: center;
+            margin-left:5%;
+            margin-right:5%;
+            
+        }
+        .col-md-3{
+            position:relative;
+            width:25%;
+        }
+        
+        .image{
+            display: block;
+            width:100%;
+            height: 500px;
+        }
+        
+        .overlay{
+            position:absolute;
+            top: 25%;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: #GGG;
+        }
+        
+        .col-md-3:hover .overlay{
+            opacity: 1.0;
+        }
+        
+        .col-md-3:hover .image{
+            opacity: 0.5;
+        }
+        
+        .text1{
+            color: black;
+            font-size: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+        }
+    
+        
+		/*#SignIn {
+			background-color: #6FBED9;
+			color: #ffffff;
+		}*/
 	</style>
 </head>
 <body id="page-top">
@@ -132,15 +230,93 @@
 		</div>
 	</div>
 
-	<div id="resultSection" class="fullPage">
+
+	<section id="resultSection" class="fullPage">
 		<div class="container" id="resultCollection">
 			
 		</div>
-	</div>
+	</sectiion>
 
 	<section class="container fullPage" id="about">
 		<div></div>
+    
+    <section class="container fullPage" id="about">
+		<div>
+            
+        <h2> It's your journey. </h2>
+        <hr>
+        <p>At Altitude, we want to give YOU the best experience you can get for the best deals. The possibilities are endless, and we allow you to enjoy life at its best in this beautiful world. </p>
+
+        <p>Since Altitude was founded on September 16, 2017, we value our customers’ quality of travel and passion for enjoyment. With our advanced algorithms, we aim to give you a taste of different cultures of the world, whether it be in festivals, cuisine or tradition. There really is so much out there! </p>
+
+        <h3> You tell us where you want to go. We'll take you there.</h3>
+
+        <p>Altitude connects you to thousands of destinations in over 125 countries. With your valued input, lasting memories will be created. </p>
+
+        <h3> Your safety is our priority. </h3>
+
+        <p>A pleasant vacation is a vacation during which travellers do not face any dangers. We work hard at Altitude so you can focus on the time of your life. </p>
+
+        <h3> We do our research. </h3>
+
+        <p>At Altitude, we work with the best of the best. Our team members have experienced our vacation destinations themselves, and they help us figure out how to design the perfect experience for you. With countless hours dedicated to planning, research and training, we do our best so you can get the best.</p>
+
+        <h3> High elevations and Low prices; An impressive duo in our books. </h3>
+
+        <p>Travel can be expensive. We understand that, and it is our mission to plan for you amazing vacations to fit your budget and interests. That way, you get your desired vacation for less, and our vision is fulfilled. It’s a win-win you don’t want to miss. </p>
+        
+        <div > 
+            <img class="img-circle" src="./asset/background.jpg">
+            <h2> Sree The Free </h2>
+            <p> Author </p>
+        </div>
+        </div>
 	</section>
+    
+    <hr>
+    <br>
+    <div class = "quote"> 
+        <center><h1> Top Experience To Travel </h1></center>
+        <hr>
+    </div>
+    
+        <div id="panel" class="row">
+            <div class="col-md-3"> 
+                <img src="asset/China.jpg" class ="image">
+                <div class="overlay">
+                <h3 id="text1"> China in 10 Days </h3>
+                <h4> $850.00 CAD/Person </h4>
+                <p> Take an informative and interactive tour of the major cities of China: Beijing, Shanghai, Suzhou, Wuxi, Hangzhou, and more! Wander around the beautiful gardens, taste the exquisite cuisine, and follow the pristine rivers. Stay at renowned 5-star hotels and experience China in its best. </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <img src="asset/Cuba.jpg" class ="image">
+                <div class="overlay">
+                <h3 id="text1"> Chill in Cuba </h3>
+                <h4> $299.00 CAD/person </h4>
+                <p> Over an 8-day period, tour around several great Cuban cities, including Havana, Trinidad, and Santiago de Cuba. In addition, enjoy the beautiful city scenery and wonderful hotel accommodation to make you feel at your best comfort! </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <img src="asset/Calgary.jpg" class ="image">
+                <div class="overlay">
+                <h3 id="text1"> Reach the Rockies! </h3>
+                <h4> $614.25 CAD/Person </h4>
+                <p> Visit one of the greatest wonders of Canada in this exclusive trip to cities including Calgary, Banff and Jasper. Package includes special hotel breakfasts, and a 5-night stay at a town centre hotel, making it extremely easy for transportation.  </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <img src="asset/Yellowstone.jpg" class ="image">
+                <div class="overlay">
+                <h3 id="text1">  Travel to Yellowstone Park </h3>
+                <h4> $391.00 CAD/Person </h4>
+                <p> For 6 days, tour around Salt Lake City to famous attractions including, but definitely not limited to, Temple Square, Antelope Island State Park, and the Clark Planetarium. Appreciate American history and culture at this landmark and have a relaxed, but very interesting time! </p>
+                </div>
+            </div>
+        </div>
+    
+    <br>
+    <br>
 </body>
 
 <script type="text/javascript">
@@ -161,9 +337,10 @@
 					$.each(data.results, function(i, post){
 						$('#resultCollection').append('<div class="col-xs-12"> <h3>'+post.destination + ' has been chosen as one of the cheap but a great vacation through out the world for you.</h3></div>');
 					});
-					$('html, body').animate({
-						scrollBottom: $("#resultSection").offset().bottom
-					}, 2000);
+					$("#").get(0).scrollIntoView();
+					// $('html, body').animate({
+					// 	scrollBottom: $("#resultSection").offset().bottom
+					// }, 2000);
 			});
 		}
 	});
