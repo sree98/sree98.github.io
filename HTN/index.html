@@ -198,7 +198,7 @@
     
   	<div class="row">  
 		<div id="landingScreen" class="fullPage">
-			<div class="centerTitleScreen" class="row">
+			<div class="centerTitleScreen row">
 				<h1 id="title" class="text-center" style="margin-top: 0"><!-- Altitude --> <img src="./asset/logo.png"></h1>
 				<div class="col-xs-12">&nbsp;</div>
 				<div class="col-xs-12">&nbsp;</div>
@@ -234,8 +234,8 @@
 		<div class="container centerTitleScreen">
 			<div class="col-xs-12" id="resultCollection">&nbsp;</div>			
 		</div>
-	</section>
 	<hr>
+	</section>
 	<br>
     
     <section id="about" class="container fullPage">
@@ -365,10 +365,19 @@
 		if (originID == '' || priceMax == '') {
 			alert("One of the input is either empty or inavlid, please try again.");
 		} else {
-			$.getJSON('https://api.sandbox.amadeus.com/v1.2/travel-intelligence/top-destinations?apikey=XpZ1mgy7gzhuZWxDSh3EgRU6cTSEkdqR&period=2016-09&origin=' + originID + '&number_of_results=10', function(data){
+			$.getJSON('https://api.sandbox.amadeus.com/v1.2/travel-intelligence/top-destinations?apikey=XpZ1mgy7gzhuZWxDSh3EgRU6cTSEkdqR&period=2016-09&origin=' + originID + '&number_of_results=10', function(destData){
 					$('#resultSection').fadeIn();
-					$.each(data.results, function(i, post){
-						$('#resultCollection').append('<div class="col-xs-12"> <h3>'+post.destination + ' has been chosen as one of the cheap but a great vacation through out the world for you.</h3></div>');
+					$.each(destData.results, function(i, destPost){
+						var destID = destPost.destination;
+						$.getJSON('https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=XpZ1mgy7gzhuZWxDSh3EgRU6cTSEkdqR&origin='+ originID + '&destination=' + destID + '&departure_date=2017-09-17&adults=1&max_price=' + priceMax + '&currency=USD&number_of_results=1', function(fareData){
+								var fareTotal = fareData.results[0].fare.price_per_adult.total_fare + fareData.results[0].fare.price_per_adult.tax;
+								console.log('Origin =' + originID);
+								console.log('Destination =' + destID);
+								console.log('fare =' + fareTotal);
+								if (fareTotal<=priceMax) {
+									$('#resultCollection').append('<div class="col-xs-12"> <h3>'+destPost.destination + ' has been chosen as one of your destination. This great vacation will only cost you ' + fareTotal + ' </h3></div>');
+								};
+						});
 					});
 					$("#resultSection").get(0).scrollIntoView();
 					// $('html, body').animate({
