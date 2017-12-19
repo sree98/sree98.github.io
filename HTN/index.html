@@ -356,7 +356,7 @@
 		if (originID == '' || priceMax == '') {
 			alert("One of the input is either empty or inavlid, please try again.");
 		} else {
-			$.getJSON('https://api.sandbox.amadeus.com/v1.2/travel-intelligence/top-destinations?apikey=XpZ1mgy7gzhuZWxDSh3EgRU6cTSEkdqR&period=2016-09&origin=' + originID + '&number_of_results=10', function(destData){
+			$.getJSON('https://api.sandbox.amadeus.com/v1.2/flights/inspiration-search?apikey=XpZ1mgy7gzhuZWxDSh3EgRU6cTSEkdqR&origin=' + originID + '&departure_date=2017-12-20&number_of_results=10', function(destData){
 					$('#resultSection').fadeIn();
 					$.each(destData.results, function(i, destPost){
 						var destID = destPost.destination;
