@@ -360,7 +360,7 @@
 					$('#resultSection').fadeIn();
 					$.each(destData.results, function(i, destPost){
 						var destID = destPost.destination;
-						$.getJSON('https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=XpZ1mgy7gzhuZWxDSh3EgRU6cTSEkdqR&origin='+ originID + '&destination=' + destID + '&departure_date=2017-09-17&adults=1&max_price=' + priceMax + '&currency=USD&number_of_results=1', function(fareData){
+						$.getJSON('https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=XpZ1mgy7gzhuZWxDSh3EgRU6cTSEkdqR&origin='+ originID + '&destination=' + destID + '&departure_date=2017-12-20&adults=1&max_price=' + priceMax + '&currency=USD&number_of_results=1', function(fareData){
 								var fareTotal = fareData.results[0].fare.price_per_adult.total_fare + fareData.results[0].fare.price_per_adult.tax;
 								console.log('Origin =' + originID);
 								console.log('Destination =' + destID);
