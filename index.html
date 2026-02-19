@@ -1,20 +1,1197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sreekuttan Sudarsanan | UI Design Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080a0f;
+      --surface: #0d1017;
+      --surface-2: #131820;
+      --border: rgba(255,255,255,0.06);
+      --border-bright: rgba(255,255,255,0.12);
+      --text: #e8eaf0;
+      --text-muted: #6b7280;
+      --text-dim: #3d4450;
+      --accent: #4fffb0;
+      --accent-dim: rgba(79,255,176,0.12);
+      --accent-glow: rgba(79,255,176,0.25);
+      --blue: #4f8fff;
+      --blue-dim: rgba(79,143,255,0.12);
+      --amber: #ffb84f;
+      --amber-dim: rgba(255,184,79,0.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NOISE TEXTURE */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* GRID BACKGROUND */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ──────────── NAV ──────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(8,10,15,0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      border: 1px solid rgba(79,255,176,0.3);
+      padding: 8px 16px;
+      border-radius: 3px;
+      transition: all 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+    }
+
+    /* ──────────── HERO ──────────── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 140px 48px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(52px, 7vw, 96px);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.35s forwards;
+    }
+
+    .hero-name span {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.2);
+    }
+
+    .hero-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(18px, 2.5vw, 28px);
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.5s forwards;
+    }
+
+    .hero-title strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .hero-bio {
+      max-width: 580px;
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 56px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.65s forwards;
+    }
+
+    .hero-bio em {
+      color: var(--text);
+      font-style: normal;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.8s forwards;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* GLOW ORBS */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .orb-1 {
+      width: 500px; height: 500px;
+      background: rgba(79,255,176,0.06);
+      top: 5%; right: -10%;
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    .orb-2 {
+      width: 350px; height: 350px;
+      background: rgba(79,143,255,0.05);
+      bottom: 20%; left: -5%;
+      animation: pulse 10s ease-in-out infinite 3s;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+
+    /* ──────────── SECTION SHARED ──────────── */
+    section {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 48px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: 64px;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ──────────── PROJECTS ──────────── */
+    .projects-grid {
+      display: grid;
+      gap: 2px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: border-color 0.3s, background 0.3s;
+      cursor: default;
+    }
+
+    .project-card:hover {
+      border-color: var(--border-bright);
+      background: var(--surface-2);
+    }
+
+    .project-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 280px;
+    }
+
+    .project-content {
+      padding: 44px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid var(--border);
+    }
+
+    .project-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .project-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+    }
+
+    .project-company {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+
+    .tag-apple { color: var(--accent); background: var(--accent-dim); }
+    .tag-skillz { color: var(--blue); background: var(--blue-dim); }
+    .tag-personal { color: var(--amber); background: var(--amber-dim); }
+
+    .project-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .project-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      flex: 1;
+      margin-bottom: 28px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tech-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 2px;
+      letter-spacing: 0.05em;
+    }
+
+    .project-signal {
+      padding: 44px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .signal-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      color: var(--text-dim);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .constraint-box {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .constraint-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .constraint-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .metric {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .metric-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .metric-value.green { color: var(--accent); }
+    .metric-value.blue { color: var(--blue); }
+    .metric-value.amber { color: var(--amber); }
+
+    .metric-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* ──────────── PHILOSOPHY ──────────── */
+    .philosophy {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 100px 0;
+    }
+
+    .philosophy-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .philosophy-quote {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .philosophy-quote span { color: var(--accent); }
+
+    .philosophy-pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .pillar {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--bg);
+      transition: border-color 0.3s;
+    }
+
+    .pillar:hover { border-color: var(--border-bright); }
+
+    .pillar-icon {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .pillar-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .pillar-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ──────────── STACK ──────────── */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+
+    .stack-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 28px 32px;
+    }
+
+    .stack-group-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      color: var(--text-dim);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .stack-items {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .stack-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .stack-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--text-dim);
+      flex-shrink: 0;
+    }
+
+    .stack-dot.primary { background: var(--accent); }
+    .stack-dot.secondary { background: var(--blue); }
+
+    /* ──────────── MISSION ──────────── */
+    .mission-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 64px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .mission-text {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(22px, 2.5vw, 32px);
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+    }
+
+    .mission-text span { color: var(--accent); }
+
+    .mission-details {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .mission-point {
+      display: flex;
+      gap: 16px;
+    }
+
+    .mission-point-icon {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .mission-point-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .mission-point-text strong {
+      color: var(--text);
+      display: block;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    /* ──────────── CONTACT ──────────── */
+    .contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .contact-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .contact-email {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .contact-email:hover { color: var(--accent); }
+
+    .contact-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .contact-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      border: 1px solid var(--border);
+      padding: 10px 20px;
+      border-radius: 3px;
+      transition: all 0.2s;
+    }
+
+    .contact-link:hover {
+      color: var(--text);
+      border-color: var(--border-bright);
+    }
+
+    .contact-link.primary {
+      color: var(--accent);
+      border-color: rgba(79,255,176,0.3);
+    }
+
+    .contact-link.primary:hover {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+    }
+
+    /* ──────────── DIVIDER ──────────── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ──────────── ANIMATIONS ──────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.hidden {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ──────────── RESPONSIVE ──────────── */
+    @media (max-width: 900px) {
+      nav { padding: 18px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 120px 24px 60px; }
+      section { padding: 70px 24px; }
+      .hero-stats { gap: 28px; flex-wrap: wrap; }
+      .project-inner { grid-template-columns: 1fr; }
+      .project-content { border-right: none; border-bottom: 1px solid var(--border); }
+      .philosophy-inner { grid-template-columns: 1fr; gap: 40px; }
+      .philosophy-pillars { grid-template-columns: 1fr; }
+      .stack-grid { grid-template-columns: 1fr 1fr; }
+      .mission-card { grid-template-columns: 1fr; padding: 36px; gap: 36px; }
+      .contact-row { flex-direction: column; gap: 24px; align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Portfolio</h1>
-    </header>
-    <section>
-        <h2>About Me</h2>
-        <p>This is a brief introduction about myself.</p>
-    </section>
-    <footer>
-        <p>Contact: myemail@example.com</p>
-    </footer>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">sree.sudarsanan</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#philosophy">Craft</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#mission">Approach</a></li>
+    </ul>
+    <a href="/cdn-cgi/l/email-protection#2d5e5f48485e58494c14156d4a404c4441034e4240" class="nav-cta">Get in touch →</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <p class="hero-eyebrow">UI Design Engineer</p>
+
+    <h1 class="hero-name">
+      Sree<br /><span>Sudarsanan</span>
+    </h1>
+
+    <p class="hero-title">
+      Building UI where <strong>the constraint is the design</strong>
+    </p>
+
+    <p class="hero-bio">
+      I build interfaces at the edge of hardware, where bandwidth limits dictate interaction models,
+      where firmware talks to pixels, and where <em>latency is measured in the tens of milliseconds</em>.
+      From peer-to-peer radio handshakes to real-time 3D hardware renders, I make
+      invisible systems feel effortless.
+    </p>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-value">4+</span>
+        <span class="stat-label">Years at Apple</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">M+</span>
+        <span class="stat-label">Users via NameDrop</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">2</span>
+        <span class="stat-label">Patents</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">30</span>
+        <span class="stat-label">Apple teams/features using my frameworks</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="section-header">
+      <span class="section-label">01</span>
+      <h2 class="section-title">Selected Work</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- NameDrop -->
+      <div class="project-card reveal">
+        <div class="project-inner">
+          <div class="project-content">
+            <div>
+              <div class="project-meta">
+                <span class="project-num">001</span>
+                <span class="project-company tag-apple">Apple</span>
+              </div>
+              <h3 class="project-title">NameDrop</h3>
+              <p class="project-desc">
+                End-to-end ownership of NameDrop, iOS's peer-to-peer contact sharing feature. The core challenge: design a UI that communicates secure hardware proximity over CoreBluetooth in under a second of physical contact, for millions of users across every network condition and device state.
+                <br /><br />
+                Every animation, state transition, and haptic beat had to map to an underlying radio handshake. Invisible infrastructure made tangible. Credited as inventor on <a href="https://patents.google.com/patent/US20240419308A1/" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">US20240419308A1</a> and <a href="https://patents.google.com/patent/US20250247901A1/" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">US20250247901A1</a>.
+              </p>
+            </div>
+            <div class="project-tags">
+              <span class="tech-tag">SwiftUI</span>
+              <span class="tech-tag">CoreBluetooth</span>
+              <span class="tech-tag">Peer-to-Peer Networking</span>
+              <span class="tech-tag">Haptics</span>
+            </div>
+          </div>
+          <div class="project-signal" style="padding: 0; display: flex; flex-direction: column;">
+            <video
+              src="https://www.apple.com/newsroom/videos/ios-namedrop/large_2x.mp4"
+              autoplay
+              muted
+              loop
+              playsinline
+              style="width: 100%; height: 220px; object-fit: cover; display: block; flex-shrink: 0;"
+            ></video>
+            <div style="padding: 32px 44px; display: flex; flex-direction: column; gap: 16px; flex: 1;">
+              <p class="signal-label">Constraints &amp; Signals</p>
+              <div class="constraint-box">
+                <p class="constraint-title">Hardware Constraint</p>
+                <p class="constraint-text">Bluetooth radio bandwidth and proximity thresholds dictate the interaction window. The UI had to be immediately legible within a 1-3 second hardware handshake.</p>
+              </div>
+              <div class="constraint-box">
+                <p class="constraint-title">Perceptual Design</p>
+                <p class="constraint-text">Haptic and visual feedback designed to communicate trust and security without words. A zero-literacy UX operating at the speed of reflex.</p>
+              </div>
+              <div class="metric">
+                <span class="metric-value green">M+</span>
+                <span class="metric-desc">Users reached on<br />day-one iOS launch</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AirPods -->
+      <div class="project-card reveal">
+        <div class="project-inner">
+          <div class="project-content">
+            <div>
+              <div class="project-meta">
+                <span class="project-num">002</span>
+                <span class="project-company tag-apple">Apple</span>
+              </div>
+              <h3 class="project-title">AirPods Setup & Engraving</h3>
+              <p class="project-desc">
+                Designed and built the setup and engraving flow for AirPods, integrating CloudKit, live device firmware data, and real-time 3D hardware renders via SceneKit and AVFoundation. The UI needed to feel instant while orchestrating asynchronous calls to cloud, firmware, and GPU pipelines simultaneously.
+                <br /><br />
+                The rendering challenge: personalized hardware previews had to update in real time without dropping a frame. UI responsiveness was non-negotiable even as the render pipeline was in motion.
+              </p>
+            </div>
+            <div class="project-tags">
+              <span class="tech-tag">SceneKit</span>
+              <span class="tech-tag">AVFoundation</span>
+              <span class="tech-tag">CloudKit</span>
+              <span class="tech-tag">Firmware APIs</span>
+              <span class="tech-tag">SwiftUI</span>
+            </div>
+          </div>
+          <div class="project-signal">
+            <p class="signal-label">Constraints &amp; Signals</p>
+            <div class="constraint-box">
+              <p class="constraint-title">Real-Time Render Constraint</p>
+              <p class="constraint-text">Personalized 3D hardware previews rendered live from firmware state. GPU pipeline managed without interrupting touch responsiveness.</p>
+            </div>
+            <div class="constraint-box">
+              <p class="constraint-title">Multi-Layer Async Coordination</p>
+              <p class="constraint-text">Cloud, firmware, and GPU responses orchestrated into a single coherent UI state. Zero flicker, zero jank, zero perceived latency.</p>
+            </div>
+            <div class="metric">
+              <span class="metric-value blue">0</span>
+              <span class="metric-desc">Perceived latency in<br />real-time render pipeline</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skillz SDK -->
+      <div class="project-card reveal">
+        <div class="project-inner">
+          <div class="project-content">
+            <div>
+              <div class="project-meta">
+                <span class="project-num">003</span>
+                <span class="project-company tag-skillz">Skillz</span>
+              </div>
+              <h3 class="project-title">Cross-Platform SDK UI</h3>
+              <p class="project-desc">
+                Owned SDK-facing React Native views shipped to 13,000+ developers and powering 10M+ active players across iOS and Android. Every UI decision had downstream consequences for thousands of integrations. Constraints-first thinking was mandatory, not optional.
+                <br /><br />
+                Diagnosed and solved a systemic matchmaking failure by redesigning the queue architecture. Reduced timeout failures by ~70% through a pooled queue system that held up under peak concurrent load.
+              </p>
+            </div>
+            <div class="project-tags">
+              <span class="tech-tag">React Native</span>
+              <span class="tech-tag">iOS 13</span>
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">SDK Design</span>
+            </div>
+          </div>
+          <div class="project-signal">
+            <p class="signal-label">Constraints &amp; Signals</p>
+            <div class="constraint-box">
+              <p class="constraint-title">Concurrency Constraint</p>
+              <p class="constraint-text">Matchmaking under peak concurrent load. Pooled queue system designed to absorb traffic spikes without cascading timeouts.</p>
+            </div>
+            <div class="constraint-box">
+              <p class="constraint-title">Developer API Constraint</p>
+              <p class="constraint-text">UI components designed for 13,000+ developer integrations. Ergonomic, predictable, and zero-surprise across every platform context.</p>
+            </div>
+            <div class="metric">
+              <span class="metric-value amber">70%</span>
+              <span class="metric-desc">Reduction in<br />matchmaking timeouts</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proximity Frameworks -->
+      <div class="project-card reveal">
+        <div class="project-inner">
+          <div class="project-content">
+            <div>
+              <div class="project-meta">
+                <span class="project-num">004</span>
+                <span class="project-company tag-apple">Apple</span>
+              </div>
+              <h3 class="project-title">Proximity UI Frameworks</h3>
+              <p class="project-desc">
+                Architected and owned internal iOS UI frameworks powering Proximity Setup across AirPods, AirTag, and iPhone. Adopted by 30 client teams across Apple. Built for reuse at scale: consistent behavior across every hardware surface, every OS version, every interaction model.
+                <br /><br />
+                This is systems-level UI thinking. Not just building one feature, but defining the shared grammar that lets dozens of teams express hardware proximity to users consistently and safely.
+              </p>
+            </div>
+            <div class="project-tags">
+              <span class="tech-tag">Swift</span>
+              <span class="tech-tag">CoreBluetooth</span>
+              <span class="tech-tag">UIKit</span>
+              <span class="tech-tag">Framework Design</span>
+              <span class="tech-tag">Multi-team</span>
+            </div>
+          </div>
+          <div class="project-signal">
+            <p class="signal-label">Constraints &amp; Signals</p>
+            <div class="constraint-box">
+              <p class="constraint-title">Cross-Product Scale</p>
+              <p class="constraint-text">A single shared framework serving AirPods, AirTag, and iPhone. Abstracted cleanly enough for 30 teams to build on without breaking each other.</p>
+            </div>
+            <div class="constraint-box">
+              <p class="constraint-title">Long-Term Maintainability</p>
+              <p class="constraint-text">Designed with API stability as a first-class constraint. Versioned, backward-compatible, documented for long-term adoption.</p>
+            </div>
+            <div class="metric">
+              <span class="metric-value green">30</span>
+              <span class="metric-desc">Internal Apple teams<br />running on my frameworks</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lilypad -->
+      <div class="project-card reveal">
+        <div class="project-inner">
+          <div class="project-content">
+            <div>
+              <div class="project-meta">
+                <span class="project-num">005</span>
+                <span class="project-company tag-personal">Drexel Research</span>
+              </div>
+              <h3 class="project-title">Lilypad: Special Education Platform</h3>
+              <p class="project-desc">
+                As an undergraduate research assistant at Drexel's College of Computing & Informatics, I helped design the UI for Lilypad, an iPad-based behavioral intervention system for special education classrooms. The interface had to serve teachers, aides, and behavioral specialists working in high-distraction environments while maintaining data accuracy required for federally mandated IEP reports.
+                <br /><br />
+                The core challenge: reduce complex behavioral data recording to simple, tap-based interactions that could be performed mid-session without breaking flow.
+              </p>
+            </div>
+            <div class="project-tags">
+              <span class="tech-tag">iPad UI Design</span>
+              <span class="tech-tag">Accessibility</span>
+              <span class="tech-tag">Education Technology</span>
+              <span class="tech-tag">Behavioral Health</span>
+            </div>
+          </div>
+          <div class="project-signal">
+            <p class="signal-label">Constraints &amp; Signals</p>
+            <div class="constraint-box">
+              <p class="constraint-title">Attention Constraint</p>
+              <p class="constraint-text">Teachers and behavioral specialists needed to record precise data while actively working with students. UI had to be actionable without sustained focus or breaking classroom engagement.</p>
+            </div>
+            <div class="constraint-box">
+              <p class="constraint-title">Compliance & Accuracy</p>
+              <p class="constraint-text">Data collected would become legal documentation for IEPs affecting 5M+ students nationwide. No room for misinterpretation or recording errors.</p>
+            </div>
+            <div class="metric">
+              <span class="metric-value blue">3</span>
+              <span class="metric-desc">School districts<br />piloting the platform</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PHILOSOPHY -->
+  <div class="philosophy">
+    <div class="philosophy-inner">
+      <h2 class="philosophy-quote reveal">
+        The constraint<br />
+        <span>is the</span><br />
+        design.
+      </h2>
+      <div class="philosophy-pillars">
+        <div class="pillar reveal">
+          <div class="pillar-icon">⚡</div>
+          <p class="pillar-title">Performance as UX</p>
+          <p class="pillar-text">Latency isn't a backend problem. Every frame drop is a trust failure. I build render pipelines and interaction models with the same care as visual design.</p>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-icon">🧠</div>
+          <p class="pillar-title">Empathetic Constraints</p>
+          <p class="pillar-text">Hardware limits and human perception aren't obstacles, they're the design brief. The best interfaces come from working with constraints, not around them.</p>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-icon">🔗</div>
+          <p class="pillar-title">Systems Thinking</p>
+          <p class="pillar-text">I build for scale and adoption. UI frameworks I've authored run across 30 teams. Good architecture ships every feature that comes after it.</p>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-icon">🤝</div>
+          <p class="pillar-title">Cross-Functional Fluency</p>
+          <p class="pillar-text">I work fluidly with firmware, design, product, and marketing. The best interfaces live at the intersection of all of them. I translate across all layers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STACK -->
+  <section id="stack">
+    <div class="section-header">
+      <span class="section-label">02</span>
+      <h2 class="section-title">Technical Stack</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="stack-grid reveal">
+      <div class="stack-group">
+        <p class="stack-group-label">Native iOS</p>
+        <div class="stack-items">
+          <div class="stack-item"><span class="stack-dot primary"></span>SwiftUI</div>
+          <div class="stack-item"><span class="stack-dot primary"></span>UIKit</div>
+          <div class="stack-item"><span class="stack-dot primary"></span>CoreBluetooth</div>
+          <div class="stack-item"><span class="stack-dot primary"></span>SceneKit</div>
+          <div class="stack-item"><span class="stack-dot primary"></span>AVFoundation</div>
+          <div class="stack-item"><span class="stack-dot primary"></span>CloudKit</div>
+        </div>
+      </div>
+      <div class="stack-group">
+        <p class="stack-group-label">Web &amp; Cross-Platform</p>
+        <div class="stack-items">
+          <div class="stack-item"><span class="stack-dot secondary"></span>React</div>
+          <div class="stack-item"><span class="stack-dot secondary"></span>React Native</div>
+          <div class="stack-item"><span class="stack-dot secondary"></span>TypeScript</div>
+          <div class="stack-item"><span class="stack-dot"></span>Node.js</div>
+        </div>
+      </div>
+      <div class="stack-group">
+        <p class="stack-group-label">Languages</p>
+        <div class="stack-items">
+          <div class="stack-item"><span class="stack-dot primary"></span>Swift</div>
+          <div class="stack-item"><span class="stack-dot primary"></span>Objective-C / C++</div>
+          <div class="stack-item"><span class="stack-dot secondary"></span>JavaScript / TypeScript</div>
+          <div class="stack-item"><span class="stack-dot"></span>Python</div>
+        </div>
+      </div>
+      <div class="stack-group">
+        <p class="stack-group-label">Platforms &amp; Tools</p>
+        <div class="stack-items">
+          <div class="stack-item"><span class="stack-dot primary"></span>iOS / iPadOS / visionOS</div>
+          <div class="stack-item"><span class="stack-dot primary"></span>watchOS / macOS</div>
+          <div class="stack-item"><span class="stack-dot secondary"></span>AWS</div>
+          <div class="stack-item"><span class="stack-dot"></span>Git / Xcode</div>
+          <div class="stack-item"><span class="stack-dot"></span>Charles Proxy</div>
+          <div class="stack-item"><span class="stack-dot"></span>Photoshop</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- MISSION -->
+  <section id="mission">
+    <div class="section-header">
+      <span class="section-label">03</span>
+      <h2 class="section-title">How I Work</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="mission-card reveal">
+      <p class="mission-text">
+        I build at the intersection of<br />
+        <span>engineering precision</span><br />
+        and human experience.
+      </p>
+      <div class="mission-details">
+        <div class="mission-point">
+          <div class="mission-point-icon">📡</div>
+          <div class="mission-point-text">
+            <strong>Constraints-first thinking</strong>
+            The best interfaces aren't designed around ideal conditions, they're designed around real limits. Hardware bandwidth, radio timing, concurrent load. I treat constraints as the creative brief, not the obstacle.
+          </div>
+        </div>
+        <div class="mission-point">
+          <div class="mission-point-icon">🖐</div>
+          <div class="mission-point-text">
+            <strong>Sensory design at the system level</strong>
+            Haptics, timing, visual feedback. These aren't polish, they're communication. I've shipped interaction systems that convey trust and state at reflex speed, without a single word on screen.
+          </div>
+        </div>
+        <div class="mission-point">
+          <div class="mission-point-icon">🔬</div>
+          <div class="mission-point-text">
+            <strong>Built with users, not for them</strong>
+            Real constraints surface from real people. I prototype early, iterate with actual users, and treat every edge case as a signal, not a bug to suppress.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <div class="divider"></div>
+  <section>
+    <div class="contact-row reveal">
+      <div class="contact-info">
+        <p class="contact-name">Sreekuttan Sudarsanan</p>
+        <a href="/cdn-cgi/l/email-protection#4e3d3c2b2b3d3b2a2f77760e29232f2722602d2123" class="contact-email"><span class="__cf_email__" data-cfemail="8bf8f9eeeef8feefeab2b3cbece6eae2e7a5e8e4e6">[email&#160;protected]</span></a>
+      </div>
+      <div class="contact-links">
+        <a href="https://linkedin.com/in/sree98" class="contact-link" target="_blank">LinkedIn ↗</a>
+        <a href="https://sreekuttan.me" class="contact-link" target="_blank">Website ↗</a>
+        <a href="/cdn-cgi/l/email-protection#8bf8f9eeeef8feefeab2b3cbece6eae2e7a5e8e4e6" class="contact-link primary">Start a conversation →</a>
+      </div>
+    </div>
+  </section>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Progressive enhancement: hide first, then animate in on scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    revealEls.forEach(el => el.classList.add('hidden'));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.remove('hidden');
+            entry.target.classList.add('visible');
+          }, 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    // Stagger philosophy pillars
+    document.querySelectorAll('.philosophy-pillars .pillar').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.1}s`;
+    });
+  </script>
 </body>
 </html>
